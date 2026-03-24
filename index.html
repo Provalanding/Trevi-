@@ -3,102 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa Vacanze Trevi</title>
+<title>Double Ex Home - Fontana di Trevi</title>
 
 <style>
 
-/* 🔥 RESET ANTI SCROLL ORIZZONTALE */
-* * {
+/* RESET */
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 html, body {
-  overflow-x: hidden; /* Blocco dello scroll laterale */
-  width: 100%; /* Impedisce che la larghezza vada oltre il 100% */
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
 }
 
+/* SFONDO */
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-              url('sfondo.jpg') center/cover fixed;
-  color: white;
-}
-/* 🌄 SFONDO */
-body {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('Fontana-di-Trevi-Anita-Ekberg.jpg') center/cover fixed;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+  url("Fontana-di-Trevi-Anita-Ekberg.jpg") center/cover fixed;
   color: white;
 }
 
-/* 🧭 HEADER TRASPARENTE */
+/* HEADER */
 header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
   background: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   z-index: 999;
 }
 
 header img {
-  height: 50px;
-  max-width: 100%;
+  height: 55px;
 }
 
-/* 📞 BUTTON */
-.call-btn {
-  background: #111;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 20px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-/* 🏡 HERO */
+/* HERO */
 .hero {
-  height: 80vh;
+  height: 85vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
-  padding: 0 20px;
+  padding: 20px;
 }
 
 .hero h1 {
-  font-size: 32px;
-  background: rgba(0,0,0,0.5);
-  padding: 15px;
-  border-radius: 10px;
-  max-width: 100%;
+  font-size: 34px;
+  background: rgba(0,0,0,0.4);
+  padding: 15px 20px;
+  border-radius: 12px;
 }
 
-/* 🏠 SEZIONI */
+/* SEZIONI */
 .section {
-  padding: 50px 20px;
-  text-align: center;
+  max-width: 1000px;
+  margin: 40px auto;
   background: rgba(255,255,255,0.95);
   color: #111;
-  margin: 20px auto;
+  padding: 40px 20px;
   border-radius: 16px;
-  max-width: 1000px;
-  width: 100%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* 📸 GALLERY RESPONSIVE */
+/* GALLERY */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 15px;
-  max-width: 100%;
+  justify-content: center;
 }
 
 .gallery img {
@@ -111,103 +90,101 @@ header img {
 }
 
 .gallery img:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
-/* 📩 FORM */
+/* FORM */
 form {
-  max-width: 400px;
-  margin: auto;
   display: flex;
   flex-direction: column;
+  max-width: 400px;
+  margin: auto;
 }
 
 input, button {
-  margin: 10px 0;
+  margin-top: 10px;
   padding: 12px;
-  border-radius: 6px;
+  border-radius: 10px;
   border: none;
   width: 100%;
-  box-sizing: border-box;
 }
 
-/* 🔴 BUTTON ROSSO */
+/* BUTTON ROSSO */
 button {
-  background: #e60023; /* Colore rosso brillante */
+  background: #e60023;
   color: white;
   font-weight: bold;
-  padding: 12px 20px;
-  border-radius: 12px; /* Bordo più morbido */
-  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(230, 0, 35, 0.3); /* Ombra leggera */
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #b8001a; /* Rosso più scuro quando hover */
-  transform: translateY(-2px); /* Effetto di sollevamento */
+  background: #b8001a;
 }
 
-button:active {
-  transform: scale(0.98); /* Effetto compressione quando clicchi */
-}
-
-/* 💬 WHATSAPP */
-.whatsapp {
+/* WHATSAPP FLOAT */
+.whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: transparent;
-  cursor: pointer;
   z-index: 999;
 }
 
-.whatsapp img {
+.whatsapp-float img {
   width: 55px;
-  height: 55px;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
 
-/* 🦶 FOOTER */
+/* FOOTER */
 footer {
-  background: transparent;
-  color: white;
-  padding: 40px 20px;
   text-align: center;
+  padding: 40px 20px;
+  background: transparent;
 }
 
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  max-width: 100%;
-}
-
-.footer-box {
-  width: 300px;
-  max-width: 100%;
-  text-align: left;
-}
-
-iframe {
+/* POPUP AIRBNB STYLE */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  border-radius: 10px;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
 }
 
-/* ✨ ANIMAZIONI AIRBNB STYLE */
-.section {
-  opacity: 0;
-  transform: translateY(25px);
-  animation: fadeUp 0.7s ease forwards;
+.popup-content {
+  background: white;
+  color: #111;
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  width: 300px;
+  animation: popIn 0.3s ease;
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.popup h2 {
+  color: #e60023;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes popIn {
+  from {transform: scale(0.8);}
+  to {transform: scale(1);}
+}
+
+.popup-close {
+  position: absolute;
+  margin-left: 120px;
+  cursor: pointer;
+  font-size: 22px;
 }
 
 </style>
@@ -215,109 +192,114 @@ iframe {
 
 <body>
 
-<!-- 🧭 HEADER -->
+<!-- HEADER -->
 <header>
   <img src="Logo Double Ex Home.png">
-
-  <a class="call-btn" href="tel:+393891282883">📞 Chiama ora</a>
 </header>
 
-<!-- 🏡 HERO -->
-<section class="hero">
-  <h1>Casa Vacanze a Fontana di Trevi</h1>
-  <p>Richiesta disponibilità diretta</p>
-</section>
+<!-- HERO -->
+<div class="hero">
+  <h1>Double Ex Home - Fontana di Trevi</h1>
+</div>
 
-<!-- 📸 GALLERY -->
-<section class="section">
-  <h2>La struttura</h2>
-
+<!-- GALLERY -->
+<div class="section">
+  <h2>La Struttura</h2>
   <div class="gallery">
     <img src="Salone_4.jpg">
     <img src="Stanza_A_3.jpg">
-    <img src="Terrazzo_1.jpg">
     <img src="Stanza_B_3.jpg">
+    <img src="Terrazzo_1.jpg">
   </div>
-</section>
+</div>
 
-<!-- 📩 FORM -->
-<section class="section" id="form">
+<!-- FORM -->
+<div class="section">
   <h2>Richiedi disponibilità</h2>
 
-  <form onsubmit="sendWhatsApp(event)">
-    <input type="text" id="nome" placeholder="Nome e cognome" required>
-    <input type="email" id="emailInput" placeholder="Email" required>
+  <form id="form">
+    <input type="text" id="nome" placeholder="Nome e Cognome" required>
+    <input type="email" placeholder="Email (info@doubleexhome)">
     <input type="date" id="checkin" required>
     <input type="date" id="checkout" required>
 
-    <button type="submit">Invia richiesta</button>
+    <button id="btnInvia" type="submit">Invia richiesta</button>
   </form>
-</section>
+</div>
 
-<!-- 🦶 FOOTER -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-content">
-
-    <div class="footer-box">
-      <h3>Casa Vacanze Trevi</h3>
-      <p>Roma centro storico</p>
-      <p>Email: info@doubleexhome.com</p>
-      <p>Tel: +393891282883</p>
-    </div>
-
-    <div class="footer-box">
-      <h3>Dove siamo</h3>
-      <p>Piazza dei Crociferi, 3 - Roma</p>
-
-      <iframe
-        src="https://www.google.com/maps?q=Piazza%20dei%20Crociferi%203%20Roma&output=embed">
-      </iframe>
-    </div>
-
-  </div>
+  <p>Email: info@doubleexhome</p>
+  <p>Roma - Fontana di Trevi</p>
 </footer>
 
-<!-- 💬 WHATSAPP -->
-<a class="whatsapp" href="#" onclick="sendWhatsApp(event)">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/960px-WhatsApp.svg.png">
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-float"
+   href="https://wa.me/393891282883"
+   target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">×</span>
+    <h2>Richiesta inviata!</h2>
+    <p>Ti risponderemo al più presto.</p>
+  </div>
+</div>
 
 <script>
 
-const telefono = "393891282883";
-const emailHost = " info@doubleexhome.com";
+let sending = false;
 
-function formatDateITA(dateStr) {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("it-IT");
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("it-IT");
 }
 
-function sendWhatsApp(e) {
-  e.preventDefault(); // Previene l'invio del form
+document.getElementById("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  if (sending) return; // 🔴 BLOCCO DOPPIO INVIO
+  sending = true;
+
+  document.getElementById("btnInvia").disabled = true;
 
   let nome = document.getElementById("nome").value;
-  let email = document.getElementById("emailInput").value;
-  let checkin = formatDateITA(document.getElementById("checkin").value);
-  let checkout = formatDateITA(document.getElementById("checkout").value);
+  let checkin = formatDate(document.getElementById("checkin").value);
+  let checkout = formatDate(document.getElementById("checkout").value);
 
   let messaggio =
 `RICHIESTA DISPONIBILITÀ
 
-Casa Vacanze Trevi
-
 Nome: ${nome}
-Email: ${email}
 Check-in: ${checkin}
-Check-out: ${checkout}`;
+Check-out: ${checkout}
 
-  // Link diretto WhatsApp (protocolli "whatsapp://" per dispositivi mobili)
- let link = `https://wa.me/393891282883?text=${encodeURIComponent(messaggio)}`;
+Double Ex Home`;
 
-  // Apre direttamente WhatsApp senza usare WhatsApp Web
-  window.location.href = link;  // Invia il messaggio direttamente tramite l'app WhatsApp mobile o desktop
+  let url = `https://wa.me/393891282883?text=${encodeURIComponent(messaggio)}`;
+
+  window.open(url, "_blank");
+
+  showPopup();
+
+  setTimeout(() => {
+    sending = false;
+    document.getElementById("btnInvia").disabled = false;
+  }, 5000);
+});
+
+function showPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 
 </script>
 
 </body>
 </html>
+
