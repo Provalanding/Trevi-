@@ -262,7 +262,7 @@ iframe {
       <h3>Casa Vacanze Trevi</h3>
       <p>Roma centro storico</p>
       <p>Email: info@doubleexhome.com</p>
-      <p>Tel: +39 3891282883</p>
+      <p>Tel: +393891282883</p>
     </div>
 
     <div class="footer-box">
@@ -293,7 +293,7 @@ function formatDateITA(dateStr) {
 }
 
 function sendWhatsApp(e) {
-  e.preventDefault();
+  e.preventDefault(); // Previene l'invio del form
 
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("emailInput").value;
@@ -310,15 +310,11 @@ Email: ${email}
 Check-in: ${checkin}
 Check-out: ${checkout}`;
 
-  window.open(
-    `https://wa.me/${telefono}?text=${encodeURIComponent(messaggio)}`,
-    "_blank"
-  );
+  // Link diretto WhatsApp (protocolli "whatsapp://" per dispositivi mobili)
+  let link = `https://wa.me/393891282883?text=${encodeURIComponent(messaggio)}`;
 
-  let oggetto = `Richiesta disponibilità Trevi - ${nome} - ${checkin} / ${checkout}`;
-
-  window.location.href =
-`mailto:${emailHost}?subject=${encodeURIComponent(oggetto)}&body=${encodeURIComponent(messaggio)}`;
+  // Apre direttamente WhatsApp senza usare WhatsApp Web
+  window.location.href = link;  // Invia il messaggio direttamente tramite l'app WhatsApp mobile o desktop
 }
 
 </script>
