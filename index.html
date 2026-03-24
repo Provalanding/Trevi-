@@ -113,18 +113,25 @@ input, button {
 }
 
 /* 💬 WHATSAPP FLOAT */
-.whatsapp {
+.whatsapp-clean {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #25D366;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: transparent; /* ❌ niente cerchio verde */
+  border: none;
+  box-shadow: none;
   cursor: pointer;
+}
+
+.whatsapp-clean img {
+  width: 55px;
+  height: 55px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-clean img:hover {
+  transform: scale(1.1);
 }
 
 .whatsapp img {
@@ -147,7 +154,7 @@ footer {
 
 <!-- 🧭 HEADER -->
 <header>
-  <img src="logo.png">
+  <img src="Logo Double Ex Home.png">
 
   <div>
     <button class="btn" onclick="scrollToForm()">Prenota</button>
@@ -195,7 +202,7 @@ footer {
 </footer>
 
 <!-- 💬 WHATSAPP -->
-<a class="whatsapp" href="#" onclick="sendWhatsApp(event)">
+<a class="whatsapp-clean" href="#" onclick="sendWhatsApp(event)">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
@@ -227,10 +234,10 @@ function sendWhatsApp(e) {
 
 🏠 Casa Vacanze Trevi
 
-👤 Nome: ${nome}
-📧 Email: ${email}
-📅 Check-in: ${checkin}
-📅 Check-out: ${checkout}
+Nome: ${nome}
+Email: ${email}
+Check-in: ${checkin}
+Check-out: ${checkout}
 
 ---
 Richiesta inviata dal sito web`;
