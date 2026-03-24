@@ -7,23 +7,32 @@
 
 <style>
 
+/* 🔥 RESET ANTI SCROLL ORIZZONTALE */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 🔴 BLOCCA SCROLL LATERALE */
+  font-family: Arial, sans-serif;
+}
+
 /* 🌄 SFONDO */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
               url('Fontana-di-Trevi-Anita-Ekberg.jpg') center/cover fixed;
   color: white;
 }
 
-/* 🧭 HEADER */
+/* 🧭 HEADER TRASPARENTE */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
-
-  background: transparent !important;
+  background: transparent;
   position: absolute;
   top: 0;
   left: 0;
@@ -33,21 +42,17 @@ header {
 
 header img {
   height: 50px;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  max-width: 100%;
 }
 
-.call-btn, .btn {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-/* 📞 CHIAMA ORA */
+/* 📞 BUTTON */
 .call-btn {
   background: #111;
   color: white;
   padding: 10px 16px;
   border-radius: 20px;
   text-decoration: none;
-  margin-left: 10px;
+  white-space: nowrap;
 }
 
 /* 🏡 HERO */
@@ -58,16 +63,18 @@ header img {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 0 20px;
 }
 
 .hero h1 {
-  font-size: 36px;
+  font-size: 32px;
   background: rgba(0,0,0,0.5);
   padding: 15px;
   border-radius: 10px;
+  max-width: 100%;
 }
 
-/* 🏠 SEZIONI AIRBNB STYLE */
+/* 🏠 SEZIONI */
 .section {
   padding: 50px 20px;
   text-align: center;
@@ -76,29 +83,22 @@ header img {
   margin: 20px auto;
   border-radius: 16px;
   max-width: 1000px;
+  width: 100%;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 📸 GALLERY */
+/* 📸 GALLERY RESPONSIVE */
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  max-width: 100%;
 }
 
 .gallery img {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 200px;
   object-fit: cover;
   border-radius: 12px;
@@ -106,7 +106,7 @@ header img {
 }
 
 .gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* 📩 FORM */
@@ -122,29 +122,28 @@ input, button {
   padding: 12px;
   border-radius: 6px;
   border: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+/* 🔴 BUTTON ROSSO */
 button {
-  background: #e60023; /* Colore rosso brillante */
+  background: #e60023;
   color: white;
-  padding: 12px 20px;
-  border-radius: 12px; /* Rende il bordo più morbido */
-  border: none;
-  cursor: pointer;
   font-weight: bold;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(230, 0, 35, 0.3); /* Ombra leggera */
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+  box-shadow: 0 6px 18px rgba(230,0,35,0.3);
 }
 
 button:hover {
-  background: #b8001a; /* Colore rosso più scuro al passaggio del mouse */
-  transform: translateY(-2px); /* Effetto di sollevamento */
-  box-shadow: 0 10px 25px rgba(230, 0, 35, 0.4); /* Ombra più intensa */
+  background: #b8001a;
+  transform: translateY(-2px);
 }
 
 button:active {
-  transform: scale(0.98); /* Effetto di riduzione della dimensione quando cliccato */
+  transform: scale(0.98);
 }
 
 /* 💬 WHATSAPP */
@@ -154,17 +153,13 @@ button:active {
   right: 20px;
   background: transparent;
   cursor: pointer;
+  z-index: 999;
 }
 
 .whatsapp img {
   width: 55px;
   height: 55px;
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
-  transition: 0.2s;
-}
-
-.whatsapp img:hover {
-  transform: scale(1.1);
 }
 
 /* 🦶 FOOTER */
@@ -180,15 +175,32 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
+  max-width: 100%;
 }
 
 .footer-box {
   width: 300px;
+  max-width: 100%;
   text-align: left;
 }
 
 iframe {
+  width: 100%;
   border-radius: 10px;
+}
+
+/* ✨ ANIMAZIONI AIRBNB STYLE */
+.section {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 </style>
@@ -200,9 +212,7 @@ iframe {
 <header>
   <img src="Logo Double Ex Home.png">
 
-  <div>
-    <a class="call-btn" href="tel:+393891282883">📞 Chiama ora</a>
-  </div>
+  <a class="call-btn" href="tel:+393891282883">📞 Chiama ora</a>
 </header>
 
 <!-- 🏡 HERO -->
@@ -211,12 +221,12 @@ iframe {
   <p>Richiesta disponibilità diretta</p>
 </section>
 
-<!-- 📸 STRUTTURA -->
+<!-- 📸 GALLERY -->
 <section class="section">
   <h2>La struttura</h2>
 
   <div class="gallery">
-   <img src="Salone_4.jpg">
+    <img src="Salone_4.jpg">
     <img src="Stanza_A_3.jpg">
     <img src="Terrazzo_1.jpg">
     <img src="Stanza_B_3.jpg">
@@ -233,7 +243,7 @@ iframe {
     <input type="date" id="checkin" required>
     <input type="date" id="checkout" required>
 
-    <button class="btn">Invia richiesta</button>
+    <button type="submit">Invia richiesta</button>
   </form>
 </section>
 
@@ -243,7 +253,7 @@ iframe {
 
     <div class="footer-box">
       <h3>Casa Vacanze Trevi</h3>
-      <p>Roma - Centro storico</p>
+      <p>Roma centro storico</p>
       <p>Email: info@doubleexhome.com</p>
       <p>Tel: +39 3891282883</p>
     </div>
@@ -253,14 +263,11 @@ iframe {
       <p>Piazza dei Crociferi, 3 - Roma</p>
 
       <iframe
-        src="https://www.google.com/maps?q=Piazza%20dei%20Crociferi%203%20Roma&output=embed"
-        width="100%" height="200">
+        src="https://www.google.com/maps?q=Piazza%20dei%20Crociferi%203%20Roma&output=embed">
       </iframe>
     </div>
 
   </div>
-
-  <p id="footerText"></p>
 </footer>
 
 <!-- 💬 WHATSAPP -->
@@ -270,26 +277,14 @@ iframe {
 
 <script>
 
-/* 🔧 CONFIG */
 const telefono = "393891282883";
-const emailHost = "info@doubleexhome.com";
-const nomeBrand = "Doubleexhome";
+const emailHost = " info@doubleexhome.com";
 
-document.getElementById("footerText").innerText = "© 2026 " + nomeBrand;
-
-/* 📍 FORMAT DATA ITA */
 function formatDateITA(dateStr) {
-  if (!dateStr) return "";
   const d = new Date(dateStr);
   return d.toLocaleDateString("it-IT");
 }
 
-/* 📍 SCROLL */
-function scrollToForm() {
-  document.getElementById("form").scrollIntoView({behavior:"smooth"});
-}
-
-/* 📩 RICHIESTA */
 function sendWhatsApp(e) {
   e.preventDefault();
 
@@ -306,17 +301,13 @@ Casa Vacanze Trevi
 Nome: ${nome}
 Email: ${email}
 Check-in: ${checkin}
-Check-out: ${checkout}
+Check-out: ${checkout}`;
 
-Richiesta inviata dal sito web`;
-
-  // 📲 WhatsApp
   window.open(
     `https://wa.me/${telefono}?text=${encodeURIComponent(messaggio)}`,
     "_blank"
   );
 
-  // 📧 EMAIL SOLO A TE
   let oggetto = `Richiesta disponibilità Trevi - ${nome} - ${checkin} / ${checkout}`;
 
   window.location.href =
