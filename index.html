@@ -124,6 +124,29 @@ input, button {
   border: none;
 }
 
+button {
+  background: #e60023; /* Colore rosso brillante */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px; /* Rende il bordo più morbido */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(230, 0, 35, 0.3); /* Ombra leggera */
+}
+
+button:hover {
+  background: #b8001a; /* Colore rosso più scuro al passaggio del mouse */
+  transform: translateY(-2px); /* Effetto di sollevamento */
+  box-shadow: 0 10px 25px rgba(230, 0, 35, 0.4); /* Ombra più intensa */
+}
+
+button:active {
+  transform: scale(0.98); /* Effetto di riduzione della dimensione quando cliccato */
+}
+
 /* 💬 WHATSAPP */
 .whatsapp {
   position: fixed;
