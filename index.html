@@ -7,7 +7,7 @@
 
 <style>
 
-/* 🌄 SFONDO GENERALE */
+/* 🌄 SFONDO */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -45,12 +45,7 @@ header img {
   padding: 10px 16px;
   border-radius: 20px;
   text-decoration: none;
-  font-weight: bold;
   margin-left: 10px;
-}
-
-.call-btn:hover {
-  background: #333;
 }
 
 /* 🏡 HERO */
@@ -70,7 +65,7 @@ header img {
   border-radius: 10px;
 }
 
-/* 🏠 SEZIONI STYLE AIRBNB */
+/* 🏠 SEZIONI AIRBNB STYLE */
 .section {
   padding: 50px 20px;
   text-align: center;
@@ -80,6 +75,16 @@ header img {
   border-radius: 16px;
   max-width: 1000px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 📸 GALLERY */
@@ -95,6 +100,11 @@ header img {
   height: 200px;
   object-fit: cover;
   border-radius: 12px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 /* 📩 FORM */
@@ -112,25 +122,23 @@ input, button {
   border: none;
 }
 
-/* 💬 WHATSAPP FLOAT */
-.whatsapp-clean {
+/* 💬 WHATSAPP */
+.whatsapp {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background: transparent;
-  border: none;
-  box-shadow: none;
   cursor: pointer;
 }
 
-.whatsapp-clean img {
+.whatsapp img {
   width: 55px;
   height: 55px;
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
-  transition: transform 0.2s ease;
+  transition: 0.2s;
 }
 
-.whatsapp-clean img:hover {
+.whatsapp img:hover {
   transform: scale(1.1);
 }
 
@@ -138,8 +146,24 @@ input, button {
 footer {
   background: transparent;
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.footer-box {
+  width: 300px;
+  text-align: left;
+}
+
+iframe {
+  border-radius: 10px;
 }
 
 </style>
@@ -168,73 +192,98 @@ footer {
   <h2>La struttura</h2>
 
   <div class="gallery">
-    <img src="Salone_4.jpg">
+   <img src="Salone_4.jpg">
     <img src="Stanza_A_3.jpg">
     <img src="Terrazzo_1.jpg">
     <img src="Stanza_B_3.jpg">
   </div>
 </section>
 
-<!-- 📩 RICHIESTA DISPONIBILITÀ -->
+<!-- 📩 FORM -->
 <section class="section" id="form">
   <h2>Richiedi disponibilità</h2>
 
   <form onsubmit="sendWhatsApp(event)">
-    <input type="text" id="nome" placeholder="Nome" required>
+    <input type="text" id="nome" placeholder="Nome e cognome" required>
     <input type="email" id="emailInput" placeholder="Email" required>
     <input type="date" id="checkin" required>
     <input type="date" id="checkout" required>
 
     <button class="btn">Invia richiesta</button>
   </form>
-
-  <p>Ti risponderemo al più presto</p>
 </section>
 
 <!-- 🦶 FOOTER -->
 <footer>
+  <div class="footer-content">
+
+    <div class="footer-box">
+      <h3>Casa Vacanze Trevi</h3>
+      <p>Roma - Centro storico</p>
+      <p>Email: info@doubleexhome.com</p>
+      <p>Tel: +39 3891282883</p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Dove siamo</h3>
+      <p>Piazza dei Crociferi, 3 - Roma</p>
+
+      <iframe
+        src="https://www.google.com/maps?q=Piazza%20dei%20Crociferi%203%20Roma&output=embed"
+        width="100%" height="200">
+      </iframe>
+    </div>
+
+  </div>
+
   <p id="footerText"></p>
 </footer>
 
 <!-- 💬 WHATSAPP -->
-<a class="whatsapp-clean" href="#" onclick="sendWhatsApp(event)">
+<a class="whatsapp" href="#" onclick="sendWhatsApp(event)">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/960px-WhatsApp.svg.png">
 </a>
 
 <script>
 
-/* 🔧 CONFIGURAZIONE */
+/* 🔧 CONFIG */
 const telefono = "393891282883";
 const emailHost = "info@doubleexhome.com";
 const nomeBrand = "Doubleexhome";
 
 document.getElementById("footerText").innerText = "© 2026 " + nomeBrand;
 
+/* 📍 FORMAT DATA ITA */
+function formatDateITA(dateStr) {
+  if (!dateStr) return "";
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("it-IT");
+}
+
 /* 📍 SCROLL */
 function scrollToForm() {
   document.getElementById("form").scrollIntoView({behavior:"smooth"});
 }
 
-/* 💬 RICHIESTA DISPONIBILITÀ */
+/* 📩 RICHIESTA */
 function sendWhatsApp(e) {
   e.preventDefault();
 
   let nome = document.getElementById("nome").value;
   let email = document.getElementById("emailInput").value;
-  let checkin = document.getElementById("checkin").value;
-  let checkout = document.getElementById("checkout").value;
+  let checkin = formatDateITA(document.getElementById("checkin").value);
+  let checkout = formatDateITA(document.getElementById("checkout").value);
 
-  let messaggio = 
-`📩 RICHIESTA DISPONIBILITÀ
+  let messaggio =
+`RICHIESTA DISPONIBILITÀ
 
-🏠 Casa Vacanze Trevi
+Casa Vacanze Trevi
 
 Nome: ${nome}
 Email: ${email}
 Check-in: ${checkin}
 Check-out: ${checkout}
 
----
 Richiesta inviata dal sito web`;
 
   // 📲 WhatsApp
@@ -244,10 +293,10 @@ Richiesta inviata dal sito web`;
   );
 
   // 📧 EMAIL SOLO A TE
+  let oggetto = `Richiesta disponibilità Trevi - ${nome} - ${checkin} / ${checkout}`;
+
   window.location.href =
-`mailto:${emailHost}
-?subject=Richiesta disponibilità - ${nome}
-&body=${encodeURIComponent(messaggio)}`;
+`mailto:${emailHost}?subject=${encodeURIComponent(oggetto)}&body=${encodeURIComponent(messaggio)}`;
 }
 
 </script>
