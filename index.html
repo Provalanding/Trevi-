@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa Vacanze</title>
+<title>Casa Vacanze Trevi</title>
 
 <style>
+
+/* 🌄 SFONDO GENERALE */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
               url('Fontana-di-Trevi-Anita-Ekberg.jpg') center/cover fixed;
   color: white;
 }
 
-/* HEADER */
+/* 🧭 HEADER */
 header {
   display: flex;
   justify-content: space-between;
@@ -36,7 +38,22 @@ header img {
   cursor: pointer;
 }
 
-/* HERO */
+/* 📞 CHIAMA ORA */
+.call-btn {
+  background: #111;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.call-btn:hover {
+  background: #333;
+}
+
+/* 🏡 HERO */
 .hero {
   height: 80vh;
   display: flex;
@@ -53,19 +70,19 @@ header img {
   border-radius: 10px;
 }
 
-/* SEZIONI */
+/* 🏠 SEZIONI STYLE AIRBNB */
 .section {
   padding: 50px 20px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.05); /* quasi trasparente */
-  color: white;
-  margin: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(8px); /* effetto vetro */
+  background: rgba(255,255,255,0.95);
+  color: #111;
+  margin: 20px auto;
+  border-radius: 16px;
+  max-width: 1000px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* GALLERY */
+/* 📸 GALLERY */
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -77,10 +94,10 @@ header img {
   width: 300px;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
-/* FORM */
+/* 📩 FORM */
 form {
   max-width: 400px;
   margin: auto;
@@ -88,23 +105,14 @@ form {
   flex-direction: column;
 }
 
-input {
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-
-input::placeholder {
-  color: rgba(255,255,255,0.7);
-}
-
-button {
-  background: #ff385c;
-  color: white;
+input, button {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 6px;
   border: none;
 }
 
-/* WHATSAPP */
+/* 💬 WHATSAPP FLOAT */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -116,35 +124,44 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
-  color: white;
-  text-decoration: none;
+  cursor: pointer;
 }
 
-/* FOOTER */
+.whatsapp img {
+  width: 35px;
+  height: 35px;
+}
+
+/* 🦶 FOOTER */
 footer {
   background: #111;
   color: white;
   padding: 20px;
   text-align: center;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- 🧭 HEADER -->
 <header>
-  <!-- 🔹 LOGO -->
-  <img src="Logo Double Ex Home.png">
-  <button class="btn" onclick="scrollToForm()">Prenota</button>
+  <img src="logo.png">
+
+  <div>
+    <button class="btn" onclick="scrollToForm()">Prenota</button>
+    <a class="call-btn" href="tel:+393891282883">📞 Chiama ora</a>
+  </div>
 </header>
 
+<!-- 🏡 HERO -->
 <section class="hero">
-  <h1>Casa Vacanze</h1>
-  <p>Fontana di Trevi - Roma</p>
+  <h1>Casa Vacanze a Fontana di Trevi</h1>
+  <p>Richiesta disponibilità diretta</p>
 </section>
 
-<!-- 📸 GALLERY (SOLO FOTO) -->
+<!-- 📸 STRUTTURA -->
 <section class="section">
   <h2>La struttura</h2>
 
@@ -156,7 +173,7 @@ footer {
   </div>
 </section>
 
-<!-- 📩 CONTATTO -->
+<!-- 📩 RICHIESTA DISPONIBILITÀ -->
 <section class="section" id="form">
   <h2>Richiedi disponibilità</h2>
 
@@ -169,44 +186,68 @@ footer {
     <button class="btn">Invia richiesta</button>
   </form>
 
-  <p>Oppure scrivici a: <b id="emailText"></b></p>
+  <p>Ti risponderemo al più presto</p>
 </section>
 
+<!-- 🦶 FOOTER -->
 <footer>
   <p id="footerText"></p>
 </footer>
 
-<a class="whatsapp" href="#" onclick="sendWhatsApp(event)">💬</a>
+<!-- 💬 WHATSAPP -->
+<a class="whatsapp" href="#" onclick="sendWhatsApp(event)">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
 
 <script>
-/* 🔧 PERSONALIZZA QUI */
 
+/* 🔧 CONFIGURAZIONE */
 const telefono = "393891282883";
-const email = "info@doubleexhome.com";
+const emailHost = "info@doubleexhome.com";
 const nomeBrand = "Doubleexhome";
 
-/* AUTO */
-
-document.getElementById("emailText").innerText = email;
 document.getElementById("footerText").innerText = "© 2026 " + nomeBrand;
 
-/* FUNZIONI */
-
+/* 📍 SCROLL */
 function scrollToForm() {
   document.getElementById("form").scrollIntoView({behavior:"smooth"});
 }
 
+/* 💬 RICHIESTA DISPONIBILITÀ */
 function sendWhatsApp(e) {
   e.preventDefault();
 
   let nome = document.getElementById("nome").value;
+  let email = document.getElementById("emailInput").value;
   let checkin = document.getElementById("checkin").value;
   let checkout = document.getElementById("checkout").value;
 
-  let msg = `Ciao, sono ${nome}. Vorrei informazioni dal ${checkin} al ${checkout}`;
+  let messaggio = 
+`📩 RICHIESTA DISPONIBILITÀ
 
-  window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(msg)}`, "_blank");
+🏠 Casa Vacanze Trevi
+
+👤 Nome: ${nome}
+📧 Email: ${email}
+📅 Check-in: ${checkin}
+📅 Check-out: ${checkout}
+
+---
+Richiesta inviata dal sito web`;
+
+  // 📲 WhatsApp
+  window.open(
+    `https://wa.me/${telefono}?text=${encodeURIComponent(messaggio)}`,
+    "_blank"
+  );
+
+  // 📧 EMAIL SOLO A TE
+  window.location.href =
+`mailto:${emailHost}
+?subject=Richiesta disponibilità - ${nome}
+&body=${encodeURIComponent(messaggio)}`;
 }
+
 </script>
 
 </body>
